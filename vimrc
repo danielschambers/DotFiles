@@ -120,8 +120,7 @@ set mouse=a
 set backspace=indent,eol,start
 
 " Show linenumbers
-set number                     " Show current line number
-set relativenumber             " Show relative line numbersset relativenumber
+set number
 
 " Set Proper Tabs
 set tabstop=2
@@ -143,7 +142,7 @@ syntax on
 set t_Co=256
 
 " Highlights matches
-set hlsearch
+:set hlsearch
 
 " if (has("termguicolors"))
 "   set termguicolors
@@ -151,7 +150,7 @@ set hlsearch
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme spacegray
-
+ 
 let g:spacegray_underline_search = 1
 let g:spacegray_italicize_comments = 1
 
@@ -190,8 +189,9 @@ let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
-" Test congifuration
-let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
+" Test configuration
+let g:rspec_runner = "os_x_iterm2"
+let g:rspec_command = "Dispatch rspec {spec}"
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
@@ -362,13 +362,6 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Vim-Test Mappings
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
 
 " Disable arrow movement, resize splits instead.
 if get(g:, 'elite_mode')
