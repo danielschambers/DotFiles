@@ -81,7 +81,6 @@ Plugin 'tpope/vim-unimpaired'
 " Testing Support
 Plugin 'janko-m/vim-test'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'christoomey/vim-tmux-runner'
 
 " Theme / Interface
 Plugin 'AnsiEsc.vim'
@@ -190,12 +189,6 @@ let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
 " Test configuration
-let g:rspec_runner = "os_x_iterm2"
-let g:rspec_command = "Dispatch rspec {spec}"
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 
 " Markdown Syntax Support
 augroup markdown
@@ -222,8 +215,14 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical" " If you want :UltiSnipsEdit to split your window. 
+
 " Vim-Test Configuration
 let test#strategy = "vimux"
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 " Neocomplete Settings
 let g:acp_enableAtStartup = 0
