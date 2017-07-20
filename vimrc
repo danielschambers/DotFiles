@@ -4,6 +4,8 @@ set encoding=utf8
 
 " Disable file type for vundle
 filetype off                  " required
+set noswapfile
+runtime macros/matchit.vim
 
 " " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -70,6 +72,11 @@ Plugin 'jadercorrea/elixir_generator.vim'
 " Ruby Support
 Plugin 'tpope/vim-rails.git'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-unimpaired'
 
 " Testing Support
 Plugin 'janko-m/vim-test'
@@ -113,7 +120,8 @@ set mouse=a
 set backspace=indent,eol,start
 
 " Show linenumbers
-set number
+set number                     " Show current line number
+set relativenumber             " Show relative line numbersset relativenumber
 
 " Set Proper Tabs
 set tabstop=2
@@ -135,7 +143,7 @@ syntax on
 set t_Co=256
 
 " Highlights matches
-:set hlsearch
+set hlsearch
 
 " if (has("termguicolors"))
 "   set termguicolors
@@ -143,7 +151,7 @@ set t_Co=256
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme spacegray
- 
+
 let g:spacegray_underline_search = 1
 let g:spacegray_italicize_comments = 1
 
