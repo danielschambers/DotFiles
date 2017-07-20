@@ -5,6 +5,7 @@ set encoding=utf8
 " Disable file type for vundle
 filetype off                  " required
 set noswapfile
+set nobackup
 runtime macros/matchit.vim
 
 " " set the runtime path to include Vundle and initialize
@@ -217,7 +218,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical" " If you want :UltiSnipsEdit to split your window. 
 
 " Vim-Test Configuration
-let test#strategy = "vimux"
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
