@@ -113,14 +113,20 @@ filetype plugin indent on    " required
 " Configuration Section
 """""""""""""""""""""""""""""""""""""
 set nowrap
-set clipboard=unnamed  
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 set mouse=a
 
 " OSX stupid backspace fix
 set backspace=indent,eol,start
 
-" Show linenumbers
+" Show linenumbersand sets relative numbers
+set relativenumber
 set number
+
+" Set line width to 80 characters
+:set textwidth=80
 
 " Set Proper Tabs
 set tabstop=2
@@ -150,7 +156,8 @@ set t_Co=256
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme spacegray
- 
+hi LineNr term=bold cterm=bold ctermfg=2 guifg=Grey guibg=Grey90
+
 let g:spacegray_underline_search = 1
 let g:spacegray_italicize_comments = 1
 
@@ -174,7 +181,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_enable_elixir_checker = 1
 let g:syntastic_elixir_checkers = ["elixir"]
 
@@ -188,8 +195,6 @@ let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 " Highlight trailing whitespace
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
-
-" Test configuration
 
 " Markdown Syntax Support
 augroup markdown
@@ -284,7 +289,7 @@ let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1'
        \ 't:tests'
 \ ]
 \ }
-  
+
 " Fzf Configuration
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -330,7 +335,7 @@ let NERDTreeShowHidden=1
 " Omnicomplete Better Nav
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
- 
+
 " Neocomplete Plugin mappins
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
